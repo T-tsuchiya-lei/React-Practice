@@ -1,0 +1,107 @@
+/* body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+} */
+
+body{
+  text-align: center;
+}
+ul{
+  margin: 0; padding: 0;
+}
+.pages__container,.tabs__container{
+  justify-content: center;
+  list-style: none;
+  display: flex;
+}
+
+.pages__container{
+  background-color: #eee;
+}
+.tabs__container{
+  margin-top: 10px;
+}
+.content__container{
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #efefef;
+}
+
+.tabs__container > li a{
+  display: inline-block;
+  width: 100px;
+  padding: 4px;
+  background-color: #ddd;
+}
+.tabs__container .selected{
+  background-color: #efefef;
+}
+
+.list__container{
+  list-style: none;
+}
+.list__container time{
+  font-size: 12px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.pages__container > li+li
+,.tabs__container > li+li
+{
+  margin-left: 20px;
+}
+a{
+  color: #000;
+  text-decoration: none;
+}
+.selected{
+  color: blue;
+}
