@@ -8,7 +8,7 @@ class Page_list extends Component {
         const target = evt.target;
         const brothers = target.parentNode.children;
 
-        for (let i = 0; i < brothers.length; i++) { 
+        for (let i = 0; i < brothers.length; i++) {
             brothers[i].classList.remove(selected);
         }
 
@@ -32,6 +32,7 @@ class Page_list extends Component {
                 <Pages />
                 <div>
                     <a href="#" onClick={this.sort.bind(this)} name='time'>新着順</a><br />
+                    {/* 新着順にならないです。初期時に新着順に色がついている方がいいかも。*/}
                     <a href="#" onClick={this.sort.bind(this)} name='title'>タイトル順</a>
                 </div>
                 <ul>

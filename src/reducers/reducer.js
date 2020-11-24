@@ -18,14 +18,14 @@ const reducer = function (state, action) {
 			const date = new Date();
 			const time = date.toLocaleString();
 			const id = newState.data.length;
-			const title = (action.title) ? action.title : 'noTitle';
-			const content = (action.content) ? action.content : 'noContent';
+			const title = (action.title) ? action.title : 'noTitle';//action.title || 'noTitle'ともかける。ただし、仕様的にnoTitleでPostできちゃダメだから、空の時はバリデーションを入れるようにしよう。
+			const content = (action.content) ? action.content : 'noContent';//上と同じく
 			newState.data.push({
-				id: id, title: title,
+				id: id, title: title,//改行した方が見やすい
 				content: content,
 				time: time
 			});
-			console.log("posted by reducer"+" id:"+id);
+			console.log("posted by reducer"+" id:"+id);//コンソールは消しておこう。
 			return newState;
 		}
 		default:
