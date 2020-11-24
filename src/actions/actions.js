@@ -11,6 +11,12 @@ const action = {
 			option: option
 		};
 	},
+	search(word) {
+		return {
+			type: 'SEARCH',
+			word: word
+		}
+	},
 	post(title, content) {
 		return {
 			type : 'POST',

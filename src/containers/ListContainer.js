@@ -2,12 +2,20 @@ import { connect } from 'react-redux';
 import action from './../actions/actions';
 import Page_list from './../components/Page_list';
 
-const mapStateToProps = state => ({data: state.data });
-
-const mapDispatchToProps = function(dispatch){
+const mapStateToProps = function (state) {
 	return {
-		sort(data){
+		data : (state.data) ? state.data : [] ,
+		sortCondition: (state.sortCondition) ? state.sortCondition : ''
+	}
+};
+
+const mapDispatchToProps = function (dispatch) {
+	return {
+		sort(data) {
 			dispatch(action.sort(data));
+		},
+		search(word) { 
+			dispatch(action.search(word));
 		}
 	}
 };

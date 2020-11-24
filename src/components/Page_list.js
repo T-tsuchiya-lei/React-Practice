@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import Pages from './Pages';
 
 class Page_list extends Component {
+    constructor(props) {
+        super(props);
+        this.searchWord = React.createRef();
+    }
     sort(evt) {
         evt.preventDefault();
-        const selected = 'selected';
         const target = evt.target;
-        const brothers = target.parentNode.children;
-
-        for (let i = 0; i < brothers.length; i++) { 
-            brothers[i].classList.remove(selected);
-        }
 
         this.props.sort(evt.target.name);
-        target.classList.add(selected);
+    }
+    search(evt) {
+        evt.preventDefault();
+        this.props.search(this.searchWord.current.value);
     }
     render() {
         const data = (this.props.data) ? this.props.data : [];
@@ -31,8 +32,12 @@ class Page_list extends Component {
             <div>
                 <Pages />
                 <div>
-                    <a href="#" onClick={this.sort.bind(this)} name='time'>新着順</a><br />
-                    <a href="#" onClick={this.sort.bind(this)} name='title'>タイトル順</a>
+                    <input type="text" ref={this.searchWord} />
+                    <input type="button" value="検索" onClick={this.search.bind(this)} />
+                </div>
+                <div>
+                    <a href="#" className={(this.props.sortCondition === 'time') ? 'selected' : ''} onClick={this.sort.bind(this)} name='time'>新着順</a><br />
+                    <a href="#" className={(this.props.sortCondition === 'title') ? 'selected' : ''} onClick={this.sort.bind(this)} name='title'>タイトル順</a>
                 </div>
                 <ul>
                     {list}
