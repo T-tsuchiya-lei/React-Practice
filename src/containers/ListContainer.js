@@ -5,7 +5,8 @@ import Page_list from './../components/Page_list';
 const mapStateToProps = function (state) {
 	return {
 		data : (state.data) ? state.data : [] ,
-		sortCondition: (state.sortCondition) ? state.sortCondition : ''
+		sortCondition: (state.sortCondition) ? state.sortCondition : '',
+		searchWord: (state.searchWord) ? state.searchWord : ''
 	}
 };
 

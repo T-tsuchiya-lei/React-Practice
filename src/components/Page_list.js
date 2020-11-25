@@ -18,13 +18,20 @@ class Page_list extends Component {
     }
     render() {
         const data = (this.props.data) ? this.props.data : [];
-        var item = data.slice(0, data.length);
+        var item = [];
+        const word = this.props.searchWord;
+        for (let i = 0; i < data.length; i++) {
+            if ((data[i].title.indexOf(word) > -1) || (data[i].content.indexOf(word) > -1)) {
+                item.push(data[i]);
+            }
+        }
         if (this.props.sortCondition) {
             switch (this.props.sortCondition) {
                 case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
                 case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
             }
         }
+        
         const list = item.map((data) => {
             return (
                 <li key={data.id}>

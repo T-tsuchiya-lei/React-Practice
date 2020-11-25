@@ -4,25 +4,15 @@ const reducer = function (state, action) {
 			return action.data;
 		}
 		case 'SORT': {
-			if (!state.data) return;
 			var newState = newState = Object.assign({}, state);
 			newState.sortCondition = action.option;
 			return newState;
 		}
 		case 'SEARCH': {
-			console.log(state);
-			if (!state.data) return;
 			const word = action.word;
-			var res_data = [];
 			var newState = newState = Object.assign({}, state);
-			var data = newState.data;
-			for (let i = 0; i < data.length; i++) {
-				if ((data[i].title.indexOf(word) > -1) || (data[i].content.indexOf(word) > -1)) {
-					res_data.push(data[i]);
-				}
-			}
-			console.log(word, res_data);
-			return res_data;
+			newState.searchWord = (word)? word : '';
+			return newState;
 		}
 		case 'POST': {
 			var newState = newState = Object.assign({}, state);
@@ -36,7 +26,7 @@ const reducer = function (state, action) {
 				content: content,
 				time: time
 			});
-			console.log("posted by reducer" + " id:" + id);
+
 			return newState;
 		}
 		default:
