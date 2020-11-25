@@ -6,6 +6,7 @@ const mapDispatchToProps = function(dispatch){
 	return {
 		init(data){
 			dispatch(action.init(data));
+			dispatch(action.sort('time'));
 		}
 	}
 };
