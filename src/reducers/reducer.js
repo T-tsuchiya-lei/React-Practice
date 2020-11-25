@@ -19,8 +19,8 @@ const reducer = function (state, action) {
 			const date = new Date();
 			const time = date.toLocaleString();
 			const id = newState.data.length;
-			const title = (action.title) ? action.title : 'noTitle';
-			const content = (action.content) ? action.content : 'noContent';
+			const title = action.title;
+			const content = action.content;
 			newState.data.push({
 				id: id, title: title,
 				content: content,

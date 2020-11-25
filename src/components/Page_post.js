@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import Pages from './Pages';
+import history from './../history';
 
 class Page_post extends Component {
-    constructor(props){ 
+    constructor(props) {
         super(props);
         this.postTitle = React.createRef();
         this.postContent = React.createRef();
     }
     post(evt) {
         evt.preventDefault();
-        this.props.post(this.postTitle.current.value,this.postContent.current.value);
+        const title = this.postTitle.current;
+        const content = this.postContent.current;
+        if (title.value && content.value) {
+            this.props.post(title.value, content.value);
+            history.push('/List');
+        }
+        else {
+            alert("Please fill in the boxes.")
+        }
     }
     render() {
         return (
@@ -18,9 +27,9 @@ class Page_post extends Component {
                 <form>
                     <div>
                         <div>タイトル</div>
-                        <input type="text" name="title" ref={this.postTitle}/>
+                        <input type="text" name="title" ref={this.postTitle} />
                         <div>内容</div>
-                        <input type="text" name="content" ref={this.postContent}/>
+                        <input type="text" name="content" ref={this.postContent} />
                     </div>
                     <input type="button" value="送信" onClick={this.post.bind(this)} />
                 </form>
