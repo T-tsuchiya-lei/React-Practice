@@ -6,12 +6,6 @@ const reducer = function (state, action) {
 		case 'SORT': {
 			if (!state.data) return;
 			var newState = newState = Object.assign({}, state);
-			var item = newState.data.slice(0, newState.data.length);
-			switch (action.option) {
-				case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
-				case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
-			}
-			newState.data = item;
 			newState.sortCondition = action.option;
 			return newState;
 		}

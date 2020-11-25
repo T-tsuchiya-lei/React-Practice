@@ -10,7 +10,7 @@ class Page_list extends Component {
         evt.preventDefault();
         const target = evt.target;
 
-        this.props.sort(evt.target.name);
+        this.props.sort(target.name);
     }
     search(evt) {
         evt.preventDefault();
@@ -18,7 +18,14 @@ class Page_list extends Component {
     }
     render() {
         const data = (this.props.data) ? this.props.data : [];
-        const list = data.map((data) => {
+        var item = data.slice(0, data.length);
+        if (this.props.sortCondition) {
+            switch (this.props.sortCondition) {
+                case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
+                case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
+            }
+        }
+        const list = item.map((data) => {
             return (
                 <li key={data.id}>
                     <h2>{data.title}</h2>
