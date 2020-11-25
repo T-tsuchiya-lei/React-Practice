@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React　from 'react';
 import './../index.css';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-//import Page_list from './Page_list';
+import { Router, Route, Switch } from 'react-router-dom';
 import PageList from './../containers/ListContainer';
 import PagePost from './../containers/PostContainer';
 import Pages from './Pages';
+import history from './../history';
 
 class App extends React.Component {
   componentDidMount() {
@@ -12,17 +12,20 @@ class App extends React.Component {
       .then(response => { return response.json() })
       .then(data => {
         this.props.init(data);
+      })
+      .catch(error => {
+        alert('There has been a problem with your fetch operation:',error);
       });
   }
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route path="/A" component={PageList} />
-          <Route path="/B" component={PagePost} />
+          <Route path="/List" component={PageList} />
+          <Route path="/Post" component={PagePost} />
           <Route path="/" component={Pages} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
