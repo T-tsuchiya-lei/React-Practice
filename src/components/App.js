@@ -1,4 +1,4 @@
-import React　from 'react';
+import React　from 'react';//Reactの後ろに全角スペースが入ってる。VSCode拡張機能のzenkakuを使って発見しやすくするのがおすすめ。
 import './../index.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import PageList from './../containers/ListContainer';
@@ -17,10 +17,6 @@ class App extends React.Component {
         alert('There has been a problem with your fetch operation:',error);
       });
   }
-// これは、正常に動作したときの挙動しか書いていないから、うまくデータを受け取れなかった場合の処理を、.catchで書いておくといいよ。
-// エラーモーダルを出すとか。
-// ちなみに、L案件では、axiosっていうのを使って、APIサーバーから情報を取得してる。
-// https://qiita.com/ksh-fthr/items/2daaaf3a15c4c11956e9
   render() {
     return (
       <Router history={history}>

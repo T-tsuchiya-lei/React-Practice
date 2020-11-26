@@ -15,4 +15,4 @@ const PagePost = connect(
     mapDispatchToProps
 )(Page_post);
 
-export default PagePost;
+export default PagePost;//エクスポートしているものと、ファイル名を同じにしておくとわかりやすい

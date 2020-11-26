@@ -15,7 +15,7 @@ const mapDispatchToProps = function (dispatch) {
 		sort(data) {
 			dispatch(action.sort(data));
 		},
-		search(word) { 
+		search(word) {
 			dispatch(action.search(word));
 		}
 	}
@@ -26,4 +26,4 @@ const PageList = connect(
     mapDispatchToProps
 )(Page_list);
 
-export default PageList;
+export default PageList;//エクスポートしているものと、ファイル名を同じにしておくとわかりやすい

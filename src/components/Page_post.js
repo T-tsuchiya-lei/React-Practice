@@ -32,7 +32,6 @@ class Page_post extends Component {
                         <input type="text" name="content" ref={this.postContent} />
                     </div>
                     <input type="button" value="送信" onClick={this.post.bind(this)} />
-                    {/* 投稿したら一覧ページへ遷移するようにしてください */}
                 </form>
             </div>
         );
