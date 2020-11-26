@@ -2,22 +2,36 @@ import React, { Component } from 'react';
 import Pages from './Pages';
 
 class Page_list extends Component {
+    constructor(props) {
+        super(props);
+        this.searchWord = React.createRef();
+    }
     sort(evt) {
         evt.preventDefault();
-        const selected = 'selected';
         const target = evt.target;
-        const brothers = target.parentNode.children;
-
-        for (let i = 0; i < brothers.length; i++) {
-            brothers[i].classList.remove(selected);
-        }
-
-        this.props.sort(evt.target.name);
-        target.classList.add(selected);
+        this.props.sort(target.name);
+    }
+    search(evt) {
+        evt.preventDefault();
+        this.props.search(this.searchWord.current.value);
     }
     render() {
         const data = (this.props.data) ? this.props.data : [];
-        const list = data.map((data) => {
+        var item = [];
+        const word = this.props.searchWord;
+        for (let i = 0; i < data.length; i++) {
+            if ((data[i].title.indexOf(word) > -1) || (data[i].content.indexOf(word) > -1)) {
+                item.push(data[i]);
+            }
+        }
+        if (this.props.sortCondition) {
+            switch (this.props.sortCondition) {
+                case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
+                case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
+            }
+        }
+
+        const list = item.map((data) => {
             return (
                 <li key={data.id}>
                     <h2>{data.title}</h2>
@@ -31,9 +45,12 @@ class Page_list extends Component {
             <div>
                 <Pages />
                 <div>
-                    <a href="#" onClick={this.sort.bind(this)} name='time'>新着順</a><br />
-                    {/* 新着順にならないです。初期時に新着順に色がついている方がいいかも。*/}
-                    <a href="#" onClick={this.sort.bind(this)} name='title'>タイトル順</a>
+                    <input type="text" ref={this.searchWord} />
+                    <input type="button" value="検索" onClick={this.search.bind(this)} />
+                </div>
+                <div>
+                    <a href="#" className={(this.props.sortCondition === 'time') ? 'selected' : ''} onClick={this.sort.bind(this)} name='time'>新着順</a><br />
+                    <a href="#" className={(this.props.sortCondition === 'title') ? 'selected' : ''} onClick={this.sort.bind(this)} name='title'>タイトル順</a>
                 </div>
                 <ul>
                     {list}

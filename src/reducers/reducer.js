@@ -5,12 +5,13 @@ const reducer = function (state, action) {
 		}
 		case 'SORT': {
 			var newState = newState = Object.assign({}, state);
-			var item = newState.data.slice(0, newState.data.length);
-			switch (action.option) {
-				case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
-				case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
-			}
-			newState.data = item;
+			newState.sortCondition = action.option;
+			return newState;
+		}
+		case 'SEARCH': {
+			const word = action.word;
+			var newState = newState = Object.assign({}, state);
+			newState.searchWord = (word)? word : '';
 			return newState;
 		}
 		case 'POST': {
@@ -18,14 +19,13 @@ const reducer = function (state, action) {
 			const date = new Date();
 			const time = date.toLocaleString();
 			const id = newState.data.length;
-			const title = (action.title) ? action.title : 'noTitle';//action.title || 'noTitle'ともかける。ただし、仕様的にnoTitleでPostできちゃダメだから、空の時はバリデーションを入れるようにしよう。
-			const content = (action.content) ? action.content : 'noContent';//上と同じく
+			const title = action.title;
+			const content = action.content;
 			newState.data.push({
 				id: id, title: title,//改行した方が見やすい
 				content: content,
 				time: time
 			});
-			console.log("posted by reducer"+" id:"+id);//コンソールは消しておこう。
 			return newState;
 		}
 		default:
