@@ -9,7 +9,6 @@ class Page_list extends Component {
     sort(evt) {
         evt.preventDefault();
         const target = evt.target;
-
         this.props.sort(target.name);
     }
     search(evt) {
@@ -27,11 +26,12 @@ class Page_list extends Component {
         }
         if (this.props.sortCondition) {
             switch (this.props.sortCondition) {
-                case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
-                case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
+                case 'time': item.sort(function (a, b) { return (a.time < b.time ? 1 : -1) }); break;
+                case 'title': item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); break;
+                default : alert('error! sortCondition is undefined') ;
             }
         }
-        
+
         const list = item.map((data) => {
             return (
                 <li key={data.id}>

@@ -10,9 +10,9 @@ const mapDispatchToProps = function(dispatch){
 	}
 };
 
-const PagePost = connect(
+const PostContainer = connect(
     null,
     mapDispatchToProps
 )(Page_post);
 
-export default PagePost;
+export default PostContainer;

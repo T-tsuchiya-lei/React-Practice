@@ -1,8 +1,8 @@
-import React　from 'react';
+import React from 'react';
 import './../index.css';
 import { Router, Route, Switch } from 'react-router-dom';
-import PageList from './../containers/ListContainer';
-import PagePost from './../containers/PostContainer';
+import Page_list from './../containers/ListContainer';
+import Page_post from './../containers/PostContainer';
 import Pages from './Pages';
 import history from './../history';
 
@@ -21,8 +21,8 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route path="/List" component={PageList} />
-          <Route path="/Post" component={PagePost} />
+          <Route path="/List" component={Page_list} />
+          <Route path="/Post" component={Page_post} />
           <Route path="/" component={Pages} />
         </Switch>
       </Router>

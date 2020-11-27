@@ -15,15 +15,15 @@ const mapDispatchToProps = function (dispatch) {
 		sort(data) {
 			dispatch(action.sort(data));
 		},
-		search(word) { 
+		search(word) {
 			dispatch(action.search(word));
 		}
 	}
 };
 
-const PageList = connect(
+const ListContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Page_list);
 
-export default PageList;
+export default ListContainer;
