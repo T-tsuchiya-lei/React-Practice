@@ -1,4 +1,4 @@
-import React　from 'react';
+import React　from 'react';//Reactの後ろに全角スペースが入ってる。VSCode拡張機能のzenkakuを使って発見しやすくするのがおすすめ。
 import './../index.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import PageList from './../containers/ListContainer';
