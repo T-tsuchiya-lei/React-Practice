@@ -21,9 +21,9 @@ const mapDispatchToProps = function (dispatch) {
 	}
 };
 
-const PageList = connect(
+const ListContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Page_list);
 
-export default PageList;//エクスポートしているものと、ファイル名を同じにしておくとわかりやすい
+export default ListContainer;

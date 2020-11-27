@@ -26,10 +26,9 @@ class Page_list extends Component {
         }
         if (this.props.sortCondition) {
             switch (this.props.sortCondition) {
-                case 'time': { item.sort(function (a, b) { return (a.time > b.time ? 1 : -1) }); } break;
-                case 'title': { item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); } break;
-                //timeとtitle共に、一番外側の{}は不要。
-                // defaultも書いておこう
+                case 'time': item.sort(function (a, b) { return (a.time < b.time ? 1 : -1) }); break;
+                case 'title': item.sort(function (a, b) { return (a.title > b.title ? 1 : -1) }); break;
+                default : alert('error! sortCondition is undefined') ;
             }
         }
 
@@ -52,7 +51,6 @@ class Page_list extends Component {
                 </div>
                 <div>
                     <a href="#" className={(this.props.sortCondition === 'time') ? 'selected' : ''} onClick={this.sort.bind(this)} name='time'>新着順</a><br />
-                    {/* 新着順じゃなくて、古い順になってる */}
                     <a href="#" className={(this.props.sortCondition === 'title') ? 'selected' : ''} onClick={this.sort.bind(this)} name='title'>タイトル順</a>
                 </div>
                 <ul>
